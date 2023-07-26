@@ -21,7 +21,7 @@
   source "$activatefile"
 
   # generating completions
-  local compfile="$1/functions/_mise"
+  local compfile="$1/_mise"
   if [[ ! -e "$compfile" || "$compfile" -ot "$command" ]]; then
     "$command" complete --shell zsh >| "$compfile"
   fi
