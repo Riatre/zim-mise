@@ -8,6 +8,8 @@
     zcompile -UR "$activatefile"
   fi
 
+  source "$activatefile"
+
   if (( $+functions[_mise_hook] )); then
     function _self_destruct_mise_hook {
         _mise_hook
@@ -17,8 +19,6 @@
     }
     precmd_functions=( _self_destruct_mise_hook ${(@)precmd_functions:#_mise_hook} )
   fi
-
-  source "$activatefile"
 
   # generating completions
   local compfile="$1/_mise"
