@@ -4,7 +4,7 @@
   # generating activation file
   local activatefile="$1/mise-activate.zsh"
   if [[ ! -e "$activatefile" || "$activatefile" -ot "$command" ]]; then
-    "$command" activate --no-hook-env zsh >| "$activatefile"
+    env -i PATH="$(dirname "$(whence -p mise)")" "$command" activate --no-hook-env zsh >| "$activatefile"
     zcompile -UR "$activatefile"
   fi
 
